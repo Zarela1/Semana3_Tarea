@@ -65,8 +65,9 @@
 </div>
 
 <script type="text/javascript">
-
-$.getJSON("listaDeporte", {}, function(data){
+/*Obtener JSON */
+$.getJSON		("listaDeporte", {}, function(data){
+	/*Bucle For*/
 	$.each(data, function(index,item){
 		$("#id_deporte").append("<option value="+item.idDeporte +">"+ item.nombre +"</option>");
 	});
@@ -122,9 +123,14 @@ $('#id_form').bootstrapValidator({
                 	message:'El nombre es de 5 a 100 caracteres',
                 	min : 5,
                 	max : 100
+                },
+                remote : {
+                	delay: 1000, /*Desde que se escribe pasa 1 seg. y manda una respuesta*/
+                	url: 'buscaPorNombreModalidad',
+                	message: 'El nombre no existe'
                 }
             }
-        },
+        }, 
         numHombres: {
     		selector : '#id_num_hombres',
             validators: {
