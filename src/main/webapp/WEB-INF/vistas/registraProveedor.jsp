@@ -28,20 +28,29 @@
 					<label class="control-label" for="id_dni">DNI</label>
 					<input class="form-control" id="id_dni" name="dni" placeholder="Ingrese el DNI" type="text" maxlength="8"/>
 				</div>
+				<div class="form-group  col-sm-6">
+				<div class="col-sm-4">
+					<label class="control-label" for="id_fecha">Fecha de registro</label>
+				</div>
+				<div class="col-sm-6">
+					<input class="form-control" type="date" id="id_fecha" name="fechaRegistro" placeholder="Ingrese la fecha" maxlength="100">
+		 		</div>
+			</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-3">
 					<label class="control-label" for="id_tipo">Tipo</label>
-					<select id="id_tipo" name="empleado.idTipo" class='form-control'>
+					<select id="id_tipo" name="tipo.idTipo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
 			    <div class="form-group col-md-3">
-					<label class="control-label" for="id_deporte">Pais</label>
+					<label class="control-label" for="id_pais">Pais</label>
 					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
+			    
 				
 		    </div>
 		    <div class="row">
@@ -56,10 +65,17 @@
 
 <script type="text/javascript">
 /*Obtener JSON */
-$.getJSON		("listaDeporte", {}, function(data){
+$.getJSON		("listaTipo", {}, function(data){
 	/*Bucle For*/
 	$.each(data, function(index,item){
-		$("#id_deporte").append("<option value="+item.idDeporte +">"+ item.nombre +"</option>");
+		$("#id_tipo").append("<option value="+item.idTipo +">"+ item.descripcion +"</option>");
+	});
+});
+/*Obtener JSON */
+$.getJSON		("listaPais", {}, function(data){
+	/*Bucle For*/
+	$.each(data, function(index,item){
+		$("#id_pais").append("<option value="+item.idPais +">"+ item.nombre +"</option>");
 	});
 });
 
@@ -72,7 +88,7 @@ $("#id_registrar").click(function (){
 		$.ajax({
 			type: 'POST',  
 			data: $("#id_form").serialize(),
-			url: 'registraModalidad',
+			url: 'registraProveedor',
 			success: function(data){
 				mostrarMensaje(data.MENSAJE);
 				limpiar();

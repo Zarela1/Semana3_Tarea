@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.empresa.entity.Deporte;
 import com.empresa.entity.Tipo;
-import com.empresa.repository.DeporteRepository;
 import com.empresa.repository.TipoRepository;
 
 @Service
