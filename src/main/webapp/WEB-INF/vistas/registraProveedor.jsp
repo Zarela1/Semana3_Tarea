@@ -29,12 +29,7 @@
 					<input class="form-control" id="id_dni" name="dni" placeholder="Ingrese el DNI" type="text" maxlength="8"/>
 				</div>
 				<div class="form-group  col-sm-6">
-				<div class="col-sm-4">
-					<label class="control-label" for="id_fecha">Fecha de registro</label>
-				</div>
-				<div class="col-sm-6">
-					<input class="form-control" type="date" id="id_fecha" name="fechaRegistro" placeholder="Ingrese la fecha" maxlength="100">
-		 		</div>
+				
 			</div>
 			</div>
 			<div class="row">
@@ -103,12 +98,9 @@ $("#id_registrar").click(function (){
 
 function limpiar(){
 	$("#id_nombre").val('');
-	$("#id_num_hombres").val('');
-	$("#id_num_mujeres").val('');
-	$("#id_sede").val('');
-	$("#id_maxima").val('');
-	$("#id_minima").val('');
-	$("#id_deporte").val(' ');
+	$("#id_dni").val('');
+	$("#id_tipo").val('');
+	$("#id_pais").val('');
 }
 
 $('#id_form').bootstrapValidator({
@@ -118,7 +110,60 @@ $('#id_form').bootstrapValidator({
         invalid: 'glyphicon glyphicon-remove',
         validating: 'glyphicon glyphicon-refresh'
     },
-    
+    fields: {
+    	nombre: {
+    		selector : '#id_nombre',
+            validators: {
+                notEmpty: {
+                    message: 'El nombre es un campo obligatorio'
+                },
+                stringLength :{
+                	message:'El nombre es de 5 a 100 caracteres',
+                	min : 5,
+                	max : 100
+                },
+                remote : {
+                	delay: 1000, /*Desde que se escribe pasa 1 seg. y manda una respuesta*/
+                	url: 'buscaPorNombreProveedor',
+                	message: 'El nombre ya existe'
+                }
+            }
+        },
+        dni: {
+    		selector : '#id_dni',
+            validators: {
+                notEmpty: {
+                    message: 'DNI es un campo obligatorio'
+                },
+                stringLength :{
+                	message:'El DNI es de 8 caracteres',
+                	max : 8
+                },
+                remote : {
+                	delay: 1000, /*Desde que se escribe pasa 1 seg. y manda una respuesta*/
+                	url: 'buscaPorDniProveedor',
+                	message: 'El DNI ya existe'
+                }
+            }
+        },
+        tipo: {
+    		selector : '#id_tipo',
+            validators: {
+            	notEmpty: {
+                    message: 'Tipo es un campo obligatorio'
+                },
+            }
+        },
+        pais: {
+    		selector : '#id_pais',
+            validators: {
+            	notEmpty: {
+                    message: 'País es un campo obligatorio'
+                },
+            }
+        },
+    	
+    }   
 });
 </script>
 

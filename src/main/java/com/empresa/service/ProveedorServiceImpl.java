@@ -18,5 +18,14 @@ public class ProveedorServiceImpl implements ProveedorService{
 	public Proveedor insertaProveedor(Proveedor obj){
 		return repository.save(obj);
 	}
-
+	
+	@Override
+	public List<Proveedor> listaPorDni(String dni){
+		return repository.findByDniIgnoreCase(dni);
+	}
+	
+	@Override
+	public List<Proveedor> listaPorNombre(String nombre){
+		return repository.findByNombreIgnoreCase(nombre);
+	}
 }

@@ -6,11 +6,12 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import com.empresa.entity.Modalidad;
 import com.empresa.entity.Pais;
 import com.empresa.entity.Proveedor;
 import com.empresa.entity.Tipo;
@@ -56,5 +57,27 @@ public class RegistraProveedorController {
 			map.put("MENSAJE", "Registro exitoso");
 		}
 		return map;
+	}
+	
+	@GetMapping("/buscaPorNombreProveedor")
+	@ResponseBody
+	public String validaNombre(String nombre) {
+		List<Proveedor> listaProveedorNombre = proveedorService.listaPorNombre(nombre);
+		if (CollectionUtils.isEmpty(listaProveedorNombre)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
+	@GetMapping("/buscaPorDniProveedor")
+	@ResponseBody
+	public String validaDni(String dni) {
+		List<Proveedor> listaProveedorDni = proveedorService.listaPorDni(dni);
+		if (CollectionUtils.isEmpty(listaProveedorDni)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
 	}
 }
