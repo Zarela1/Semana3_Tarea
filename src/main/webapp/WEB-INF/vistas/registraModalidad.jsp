@@ -104,7 +104,7 @@ function limpiar(){
 	$("#id_minima").val('');
 	$("#id_deporte").val(' ');
 }
-
+ 
 $('#id_form').bootstrapValidator({
     message: 'This value is not valid',
     feedbackIcons: {

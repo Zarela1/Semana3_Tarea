@@ -152,7 +152,7 @@ $('#id_form').bootstrapValidator({
             	notEmpty: {
                     message: 'Tipo es un campo obligatorio'
                 },
-            }
+            } 
         },
         pais: {
     		selector : '#id_pais',

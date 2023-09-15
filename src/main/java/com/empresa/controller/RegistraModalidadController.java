@@ -41,7 +41,7 @@ public class RegistraModalidadController {
 	public List<Deporte> lista(){
 		return deporteService.listaDeporte();
 	}
-  
+   
 	
 	
 	@PostMapping("/registraModalidad")

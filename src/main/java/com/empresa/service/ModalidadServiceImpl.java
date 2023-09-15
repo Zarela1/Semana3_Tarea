@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import com.empresa.entity.Modalidad;
 import com.empresa.repository.ModalidadRepository;
 
-@Service
+@Service 
 public class ModalidadServiceImpl implements ModalidadService {
-	
+	 
 	@Autowired
 	private ModalidadRepository repository;
 	
