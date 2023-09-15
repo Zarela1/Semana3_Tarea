@@ -10,7 +10,7 @@ import com.empresa.entity.Modalidad;
 import com.empresa.repository.ModalidadRepository;
 
 @Service
-public class ModalidadServiceImpl implements ModalidadService{
+public class ModalidadServiceImpl implements ModalidadService {
 	
 	@Autowired
 	private ModalidadRepository repository;
