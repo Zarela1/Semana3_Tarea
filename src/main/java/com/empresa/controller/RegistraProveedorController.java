@@ -1,5 +1,6 @@
 package com.empresa.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +51,7 @@ public class RegistraProveedorController {
 	@ResponseBody
 	public Map<?, ?> registra(Proveedor obj){
 		HashMap<String, String> map = new HashMap<String, String>();
+		obj.setFechaRegistro(new Date());
 		Proveedor objSalida = proveedorService.insertaProveedor(obj);
 		if (objSalida == null) {
 			map.put("MENSAJE", "Error en el registro");
