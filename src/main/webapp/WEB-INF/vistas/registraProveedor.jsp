@@ -24,7 +24,7 @@
 					<label class="control-label" for="id_nombre">Nombre</label>
 					<input class="form-control" type="text" id="id_nombre" name="nombre" placeholder="Ingrese el nombre">
 				</div>
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_dni">DNI</label>
 					<input class="form-control" id="id_dni" name="dni" placeholder="Ingrese el DNI" type="text" maxlength="8"/>
 				</div>
@@ -33,13 +33,13 @@
 			</div>
 			</div>
 			<div class="row">
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-6">
 					<label class="control-label" for="id_tipo">Tipo</label>
 					<select id="id_tipo" name="tipo.idTipo" class='form-control'>
-						<option value=" ">[Seleccione]</option>    
+						<option value=" " >[Seleccione]</option>    
 					</select>
 			    </div>
-			    <div class="form-group col-md-3">
+			    <div class="form-group col-md-6">
 					<label class="control-label" for="id_pais">Pais</label>
 					<select id="id_pais" name="pais.idPais" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
@@ -118,15 +118,15 @@ $('#id_form').bootstrapValidator({
                     message: 'El nombre es un campo obligatorio'
                 },
                 stringLength :{
-                	message:'El nombre es de 5 a 100 caracteres',
-                	min : 5,
+                	message:'El nombre es de 3 a 100 caracteres',
+                	min : 3,
                 	max : 100
                 },
                 remote : {
                 	delay: 1000, /*Desde que se escribe pasa 1 seg. y manda una respuesta*/
                 	url: 'buscaPorNombreProveedor',
                 	message: 'El nombre ya existe'
-                }
+                },
             }
         },
         dni: {
@@ -143,6 +143,10 @@ $('#id_form').bootstrapValidator({
                 	delay: 1000, /*Desde que se escribe pasa 1 seg. y manda una respuesta*/
                 	url: 'buscaPorDniProveedor',
                 	message: 'El DNI ya existe'
+                },
+                regexp: {
+                    regexp: /^[0-9]+$/,
+                    message: 'Ingresar DNI con caracteres num&eacute;ricos'
                 }
             }
         },
@@ -158,7 +162,7 @@ $('#id_form').bootstrapValidator({
     		selector : '#id_pais',
             validators: {
             	notEmpty: {
-                    message: 'País es un campo obligatorio'
+                    message: 'PaÃ­s es un campo obligatorio'
                 },
             }
         },
@@ -166,11 +170,5 @@ $('#id_form').bootstrapValidator({
     }   
 });
 </script>
-
-
 </body>
 </html>
-
-
-
-
